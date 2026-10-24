@@ -19,4 +19,16 @@ model User {
   name         String
   passwordHash String
   createdAt    DateTime @default(now())
+  cars         Car[]
+}
+
+model Car {
+  id     Int    @id @default(autoincrement())
+  model  String
+  color  String
+  km     Int
+  userId Int?
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId]) // id, unique and default
 }
