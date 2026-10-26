@@ -5,7 +5,7 @@ export async function createCar(
         model: string;
         color: string;
         km: number;
-        userID?: number;
+        userId?: number;
     }) {
         return prisma.car.create({data});
     }

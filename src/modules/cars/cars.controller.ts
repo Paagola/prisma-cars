@@ -9,9 +9,6 @@ export async function createCarCtrl(req: Request, res: Response) {
     if (error.code === 'P2002') {
       return res.status(409).json({ message: 'El email ya está en uso' });
     }
-    if (error.code === 'P2003') {
-      return res.status(400).json({ message: 'El usuario indicado no existe' });
-    }
     res.status(500).json({ message: error.message });
   }
 }
@@ -55,9 +52,6 @@ export async function updateCarCtrl(req: Request, res: Response) {
   } catch (error: any) {
     if (error.code === 'P2025') {
       return res.status(404).json({ message: 'Coche no encontrado' });
-    }
-    if (error.code === 'P2002') {
-      return res.status(409).json({ message: 'El email ya está en uso' });
     }
     res.status(500).json({ message: error.message });
   }
